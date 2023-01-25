@@ -1,0 +1,83 @@
+type AdminApproved @entity(immutable: true) {
+  id: Bytes!
+  account: Bytes! # address
+  sender: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AdminRevoked @entity(immutable: true) {
+  id: Bytes!
+  account: Bytes! # address
+  sender: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MarketplaceEnabled @entity(immutable: true) {
+  id: Bytes!
+  requestor: Bytes! # address
+  value: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MarketplaceFees @entity(immutable: true) {
+  id: Bytes!
+  requestor: Bytes! # address
+  feeBPS: Int! # uint16
+  referrerBPS: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MarketplaceRoyaltyEngineUpdate @entity(immutable: true) {
+  id: Bytes!
+  royaltyEngineV1: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MarketplaceSellerRegistry @entity(immutable: true) {
+  id: Bytes!
+  requestor: Bytes! # address
+  registry: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MarketplaceWithdraw @entity(immutable: true) {
+  id: Bytes!
+  requestor: Bytes! # address
+  erc20: Bytes! # address
+  amount: BigInt! # uint256
+  receiver: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MarketplaceWithdrawEscrow @entity(immutable: true) {
+  id: Bytes!
+  requestor: Bytes! # address
+  erc20: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -1,0 +1,47 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Marketplace
+    network: mainnet
+    source:
+      address: "0x73f4877b7db9923cf42d7f579fe7bec360ffcd22"
+      abi: Marketplace
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AdminApproved
+        - AdminRevoked
+        - MarketplaceEnabled
+        - MarketplaceFees
+        - MarketplaceRoyaltyEngineUpdate
+        - MarketplaceSellerRegistry
+        - MarketplaceWithdraw
+        - MarketplaceWithdrawEscrow
+        - OwnershipTransferred
+      abis:
+        - name: Marketplace
+          file: ./abis/Marketplace.json
+      eventHandlers:
+        - event: AdminApproved(indexed address,indexed address)
+          handler: handleAdminApproved
+        - event: AdminRevoked(indexed address,indexed address)
+          handler: handleAdminRevoked
+        - event: MarketplaceEnabled(address,bool)
+          handler: handleMarketplaceEnabled
+        - event: MarketplaceFees(address,uint16,uint16)
+          handler: handleMarketplaceFees
+        - event: MarketplaceRoyaltyEngineUpdate(address)
+          handler: handleMarketplaceRoyaltyEngineUpdate
+        - event: MarketplaceSellerRegistry(address,address)
+          handler: handleMarketplaceSellerRegistry
+        - event: MarketplaceWithdraw(address,address,uint256,address)
+          handler: handleMarketplaceWithdraw
+        - event: MarketplaceWithdrawEscrow(address,address,uint256)
+          handler: handleMarketplaceWithdrawEscrow
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/marketplace.ts
