@@ -13,11 +13,7 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - AdminApproved
-        - AdminRevoked
         - MarketplaceEnabled
-        - MarketplaceFees
-        - MarketplaceRoyaltyEngineUpdate
         - MarketplaceSellerRegistry
         - MarketplaceWithdraw
         - MarketplaceWithdrawEscrow
@@ -26,14 +22,8 @@ dataSources:
         - name: Marketplace
           file: ./abis/Marketplace.json
       eventHandlers:
-        - event: AdminApproved(indexed address,indexed address)
-          handler: handleAdminApproved
-        - event: AdminRevoked(indexed address,indexed address)
-          handler: handleAdminRevoked
         - event: MarketplaceEnabled(address,bool)
           handler: handleMarketplaceEnabled
-        - event: MarketplaceFees(address,uint16,uint16)
-          handler: handleMarketplaceFees
         - event: MarketplaceRoyaltyEngineUpdate(address)
           handler: handleMarketplaceRoyaltyEngineUpdate
         - event: MarketplaceSellerRegistry(address,address)
